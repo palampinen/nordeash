@@ -1,0 +1,28 @@
+<div class="jumbotron">
+  <div class="container">
+  <h1>Lataa tiedosto</h1>
+  <p class="lead">
+    
+    <input type="file" id="csvFile" ng-model="csvFile" custom-on-change="upload" />
+    Ladattava tiedosto Nordean .csv tai .txt<br />
+    Tieto käsitellään pelkästään selaimessa eikä sitä viedä palvelimelle
+  </p>
+  </div>
+</div>
+
+
+<div class="container">
+
+  <h2 class="total" ng-if="total"><span class="title">Yhteensä</span> {{total}}<span class="currency">&euro;</span></h2>
+  <div class="pricerows">
+
+    <div ng-repeat="row in summary" class="pricerow">
+      <span class="lbl">{{row.id || '-ei saajan nimeä-'}}</span> <span class="sum">{{row.sum}} &euro;</span>
+
+      <div class="progress">
+        <div class="progress-bar" role="progressbar"  style="width: {{row.percentage}}%"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
