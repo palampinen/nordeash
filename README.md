@@ -1,12 +1,14 @@
-# nordeash
+# NORDEASH
 
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.11.1.
+Näyttää nordean kulutuksesi. Tietojasi käsitellään pelkästään sinun selaimessasi.
+
+[Demo](palampinen.github.io/nordeash)
 
 ## Build & development
 
+`git clone https://github.com/palampinen/nordeash.git`
+
+`bower install && npm install`
+
 Run `grunt` for building and `grunt serve` for preview.
 
-## Testing
-
-Running `grunt test` will run the unit tests with karma.

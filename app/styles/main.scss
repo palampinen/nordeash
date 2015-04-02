@@ -8,15 +8,12 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 
 /* Custom page header */
-.header {
 
-  /* Make the masthead heading the same height as the navigation */
-  h3 {
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 40px;
-    padding-bottom: 19px;
-  }
+.guide {
+  margin: 0 0 15px;
+  clear: both;
+  line-height: 50px;
+  span {display: inline-block;float: left;width: 50px;height: 50px; text-align: center;border:2px solid #999;color:#999;border-radius: 50%;margin: 0 20px 00px 0;line-height: 46px; padding: 0;}
 }
 
 .jumbotron {
@@ -24,7 +21,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   background:#E7E7E7;
   border-radius: 0;
   .lead {
-    input {margin:30px 0; padding:25px; display:block; border:2px solid #aaa;outline:none; cursor:pointer;
+    input {margin:20px 0 30px; padding:25px; display:block; border:2px solid #aaa;outline:none; cursor:pointer;
       color:$brand-primary;
       &:active,&:hover {border-color:$brand-primary;}
     }

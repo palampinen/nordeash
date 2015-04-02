@@ -19,7 +19,13 @@ angular.module('nordeashApp')
 
   	}
 
+    $scope.timeInterval = [];
+
   	var manipulateData = function(data){
+
+     $scope.timeInterval.push(data[1].date);
+     $scope.timeInterval.push(data[data.length-1].date);
+
   		var summary = [];
   		data = _.groupBy(data, function(item) {
   			return item.target

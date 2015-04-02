@@ -1,11 +1,15 @@
 <div class="jumbotron">
   <div class="container">
-  <h1>Lataa tiedosto</h1>
+
+  <h2 class="guide clearfix"><span>1</span> Lataa tilitietosi koneellesi haluamaltasi aikaväliltä Nordean verkkopankista</h2>
+  <img src="images/nordea-ohje.png" title="Lataa tilitietosi Nordean verkkopankista Tapahtumaluettelo-välilehdeltä" />
+ 
+  <h2 class="guide clearfix"><span>2</span> Lataa tiedosto tähän</h2>
   <p class="lead">
     
     <input type="file" id="csvFile" ng-model="csvFile" custom-on-change="upload" />
-    Ladattava tiedosto Nordean .csv tai .txt<br />
-    Tieto käsitellään pelkästään selaimessa eikä sitä viedä palvelimelle
+    Ladattava tiedosto Nordean .txt tai .csv<br />
+    Tietojasi käsitellään pelkästään selaimessasi.
   </p>
   </div>
 </div>
@@ -13,7 +17,7 @@
 
 <div class="container">
 
-  <h2 class="total" ng-if="total"><span class="title">Yhteensä</span> {{total}}<span class="currency">&euro;</span></h2>
+  <h2 class="total" ng-if="total"><span class="title">Yhteensä {{timeInterval[0]}}-{{timeInterval[1]}}</span> {{total}}<span class="currency">&euro;</span></h2>
   <div class="pricerows">
 
     <div ng-repeat="row in summary" class="pricerow">
