@@ -1,14 +1,16 @@
 # NORDEASH
 
-Näyttää nordean kulutuksesi. Tietojasi käsitellään pelkästään sinun selaimessasi.
+Näyttää Nordean kulutuksesi. Tietojasi käsitellään pelkästään sinun selaimessa.
 
-[Demo](palampinen.github.io/nordeash)
+[Demo](http://palampinen.github.io/nordeash)
 
-## Build & development
+## Asenna ja aja koneellasi
 
 `git clone https://github.com/palampinen/nordeash.git`
 
+`cd nordeash`
+
 `bower install && npm install`
 
-Run `grunt` for building and `grunt serve` for preview.
+`grunt serve`
 
