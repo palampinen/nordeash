@@ -1,50 +1,107 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 @import "_variables.scss";
 
+$brand-secondary: #3F4464;
+$brand-accent: #FA4789;
+$brand-income: #57E08B;
+
+
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
 
 
+
+
 /* Custom page header */
-.guide {
-  margin: 0 0 15px;
-  clear: both;
-  line-height: 50px;
-  span {display: inline-block;float: left;width: 50px;height: 50px; text-align: center;border:2px solid #999;color:#999;border-radius: 50%;margin: 0 20px 00px 0;line-height: 46px; padding: 0;}
-}
 
 .jumbotron {
-  h1 {margin-top:0;padding-top:0;}
-  background:#E7E7E7;
+
+  .guide {
+    margin: 0 0 15px;
+    clear: both;
+    line-height: 50px;
+    color:#FFF;
+    span {display: inline-block;float: left;width: 50px;height: 50px; text-align: center;border:2px solid $brand-accent;color:rgba(255,255,255,.6);border-radius: 50%;margin: 0 20px 0px 0;line-height: 46px; padding: 0;}
+  }
+  .infoimg {max-width: 500px;margin-bottom: 30px;}
+  background:$brand-secondary;
+  color:rgba(255,255,255,.6);
   border-radius: 0;
+  position: relative;
+  padding-bottom: 0;
   .lead {
     input {margin:20px 0 30px; padding:25px; display:block; border:2px solid #aaa;outline:none; cursor:pointer;
       color:$brand-primary;
       &:active,&:hover {border-color:$brand-primary;}
     }
   }
-}
+  .no-menu.container {padding-bottom: 20px;}
+  .container {position: relative;padding-bottom:30px; transition:all 0.4s ease;}
 
-.header {margin:0;}
-.navbar {
-  border:0;
-  margin: 0;
-  .navbar-brand {font-weight:100; text-transform:uppercase; color:$brand-primary;
-    img {
-      height:30px;
-      float: left;
-      margin: -5px 5px 0 0;
-      opacity: 0.5;
+  .menu {
+    margin: 40px 0 0px;
+    bottom:-30px;
+    padding: 0;
+    position: relative;
+    left: 0;
+    width: 100%;
+    display: block;
+    li{ 
+      list-style: none;
+      a{
+        float:left;
+        display:inline-block;
+        text-transform:uppercase;
+        font-size: 20px;
+        padding: 10px 35px;
+        color:rgba(255,255,255,.8);
+        outline:0 !important;
+        text-decoration: none;
+        &.active {border-bottom: 2px solid $brand-accent;color:#FFF;
+          .badge {background: $brand-accent;}
+        }
+        &:hover {color:#FFF;}
+        .badge{background:rgba(255,255,255,.4);margin:-5px 0 0 -5px;float:right;color:$brand-secondary;display:inline-block; font-size:12px; padding:2px 3px; border-radius:2px;}
+
+      }
     }
   }
 }
 
-.center {display:block; text-align:center; margin: 0 auto;}
+
+// Header
+.header {margin:0;}
+.navbar-default {
+  background: $brand-secondary;
+  border:0;
+  margin: 0;
+  .navbar-nav {
+     &>li>a{font-weight: bold;color:rgba(255,255,255,.3);
+      &:hover {color:rgba(255,255,255,.8)}
+     }
+     &> .active > a, &> .active > a:hover, &> .active > a:focus{background: rgba(255,255,255,.0);color:rgba(255,255,255,.8);}
+  }
+  .navbar-brand {
+    font-weight:100; 
+    text-transform:uppercase; 
+    color:#FFF;
+    img {
+      height:30px;
+      float: left;
+      margin: -5px 5px 0 0;
+    }
+  }
+}
+
+.container-relative {position: relative;}
+.loader {display:block;margin:0 0 0 -35px;width:70px; height:70px; position: absolute; left:50%; bottom:-35px; padding:10px; border-radius: 50%;text-align: center;background: #FFF url(../images/loader.svg) no-repeat 50% 50%;}
+
+
 
 .total {
-  color:$brand-primary;
+  color:$brand-accent;
   text-align: center;
   font-size: 400%;
   margin: 0 0 20px;
@@ -57,7 +114,14 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   .sum {margin:-2px 0 0 20px; font-weight:bold; float:right;}
   .progress {
     box-shadow:none;
+    height: 15px;
+    .progress-bar {min-width: 1px;box-shadow: none;background: $brand-accent;}
   }
+}
+
+.income{
+  .total {color:$brand-primary;}
+  .progress .progress-bar {background:$brand-primary;}
 }
 
 /* Responsive: Portrait tablets and up */

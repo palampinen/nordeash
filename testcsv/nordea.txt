@@ -1,0 +1,4 @@
+Tilinumero	FI1234567890123
+Kirjauspäivä	Arvopäivä	Maksupäivä	Määrä	Saaja/Maksaja	Tilinumero	BIC	Tapahtuma	Viite	Maksajan viite	Viesti	Kortinnumero	Kuitti	
+02.01.2014	02.01.2014	02.01.2014	-55,00	Fysioline Fressi Oy	800018-71153384		Suoraveloitus	11111 22222		KUNTOSALIMAKSU 			
+02.01.2014	02.01.2014	02.01.2014	-24,34	Sokos Herkku Tampere			Korttiosto	131231019554		Tampere 	5160010005048867		
