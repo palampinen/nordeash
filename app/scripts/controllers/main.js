@@ -8,13 +8,13 @@
  * Controller of the nordeashApp
  */
 angular.module('nordeashApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', function ($scope, $timeout) {
 
+    $scope.loading = false;
+      
+    $scope.upload = function(evt){
 
-  	$scope.upload = function(evt){
-  		console.log(evt.target.files[0]);
-
-
+      $scope.loading=true;
   		Upload('csvFile',manipulateData);
 
   	}
@@ -35,6 +35,7 @@ angular.module('nordeashApp')
   			summary.push({
   				id:id,
   				length:purchase.length,
+          percentage: 0,
   				sum: Math.round( _.reduce(purchase, function(memo, num){ var price = (-1 * parseFloat(num.sum.replace(',','.'))); return price > 0 ? memo + price : memo; },0) )
   			})
   		})
@@ -43,20 +44,29 @@ angular.module('nordeashApp')
   			return item.sum;
   		}).reverse();
 
-  		//%
-  		summary = _.map(summary,function(item){
-  			item.percentage = Math.round( item.sum / summary[0].sum * 100);
-  			return item;
-  		})
+
 
   		$scope.total = _.reduce(summary,function(memo, num) { return memo+parseInt(num.sum) },0)
 
 
-  		$scope.summary = summary;
-  		console.log(summary);
+      
+      $scope.summary = summary;
+
+      //%
+      $timeout(function(){
+        $scope.summary = _.map($scope.summary,function(item){
+          item.percentage = Math.round( item.sum / summary[0].sum * 100);
+          return item;
+        })
+        $scope.loading = false;
+      },4000)
+
+
+      
   	}
 
-  	var  Upload = function(id,cb) {
+  	var Upload = function(id,cb) {
+      $scope.loading = true;
 	    var fileUpload = document.getElementById(id);
 	    var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/,
 	    		tab = '(\t(?=(?:(?:[^"]*"){2})*[^"]*$))',
@@ -89,9 +99,11 @@ angular.module('nordeashApp')
 	            reader.readAsText(fileUpload.files[0]);
 	        } else {
 	            alert("This browser does not support HTML5.");
+              $scope.loading = false;
 	        }
 	    } else {
 	        alert("Please upload a valid CSV file.");
+          $scope.loading = false;
 	    }
 	}
 

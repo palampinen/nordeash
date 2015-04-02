@@ -8,7 +8,6 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 
 /* Custom page header */
-
 .guide {
   margin: 0 0 15px;
   clear: both;
@@ -42,6 +41,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   }
 }
 
+.center {display:block; text-align:center; margin: 0 auto;}
 
 .total {
   color:$brand-primary;
