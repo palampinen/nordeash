@@ -8,86 +8,103 @@
  * Controller of the nordeashApp
  */
 angular.module('nordeashApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', function ($scope, $timeout, Bank) {
 
 
-  	$scope.upload = function(evt){
-  		console.log(evt.target.files[0]);
+    $scope.banks = ['Nordea','Osuuspankki']
+    $scope.my = { bank: 'Nordea' };
 
 
-  		Upload('csvFile',manipulateData);
-
+    $scope.upload = function(evt){
+      console.log($scope.my.bank);
+      if(!$scope.my.bank)
+        return
+      $scope.loading=true;
+      Bank.upload('csvFile',$scope.my.bank, manipulateData)
   	}
 
+    $scope.timeInterval = [];
+
   	var manipulateData = function(data){
-  		var summary = [];
+
+
+
+     $scope.timeInterval.push(data[0].date);
+     $scope.timeInterval.push(data[data.length-1].date);
+
+  		var outcome = [],
+          income  = [];
+
+
   		data = _.groupBy(data, function(item) {
-  			return item.target
+  			return item.target.toLowerCase().trim();
   		})
 
-  		_.map(data, function(purchase,id){
-  			summary.push({
+  		_.map(data, function(shop,id){
+        var tmpOut = [], tmpIn = [];
+
+        _.map(shop,function(purchase){
+          if(parseFloat(purchase.sum.replace(',','.')) > 0)
+            tmpIn.push(purchase)
+          else 
+            tmpOut.push(purchase)
+        })
+
+        if(tmpOut.length)
+  			outcome.push({
   				id:id,
-  				length:purchase.length,
-  				sum: Math.round( _.reduce(purchase, function(memo, num){ var price = (-1 * parseFloat(num.sum.replace(',','.'))); return price > 0 ? memo + price : memo; },0) )
+          percentage: 0,
+          length:tmpOut.length,
+  				sum: Math.round( _.reduce(tmpOut, function(memo, num){ var price = (-1 * parseFloat(num.sum.replace(',','.'))); return price > 0 ? memo + price : memo },0) )
   			})
+
+        if(tmpIn.length)
+        income.push({
+          id:id,
+          percentage: 0,
+          length:tmpIn.length,
+          sum: Math.round( _.reduce(tmpIn, function(memo, num){ var price = parseFloat(num.sum.replace(',','.')); return price > 0 ? memo + price : memo },0) )
+        })
+
+
+
   		})
 
-  		summary = _.sortBy(summary, function(item){
+
+  		outcome = _.sortBy(outcome, function(item){
   			return item.sum;
   		}).reverse();
 
-  		//%
-  		summary = _.map(summary,function(item){
-  			item.percentage = Math.round( item.sum / summary[0].sum * 100);
-  			return item;
-  		})
+      income = _.sortBy(income, function(item){
+        return item.sum;
+      }).reverse();
 
-  		$scope.total = _.reduce(summary,function(memo, num) { return memo+parseInt(num.sum) },0)
+      $scope.totalOutcome = _.reduce(outcome,function(memo, num) { return memo+parseInt(num.sum) },0)
+  		$scope.totalIncome = _.reduce(income,function(memo, num) { return memo+parseInt(num.sum) },0)
 
+      $scope.outcome = outcome;
+      $scope.income = income;
 
-  		$scope.summary = summary;
-  		console.log(summary);
+      //%
+      $timeout(function(){
+        $scope.outcome = _.map($scope.outcome,function(item){
+          item.percentage = Math.round( item.sum / outcome[0].sum * 100);
+          return item;
+        })
+        $scope.income = _.map($scope.income,function(item){
+          item.percentage = Math.round( item.sum / income[0].sum * 100);
+          return item;
+        })
+        $scope.loading = false;
+      },4000)
+
+      $scope.loaded = true;
+      $scope.mode = 'outcome';
   	}
 
-  	var  Upload = function(id,cb) {
-	    var fileUpload = document.getElementById(id);
-	    var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/,
-	    		tab = '(\t(?=(?:(?:[^"]*"){2})*[^"]*$))',
-	    		tabregex	= new RegExp (tab, 'g');
-        
-	    if (regex.test(fileUpload.value.toLowerCase())) {
-	        if (typeof (FileReader) != "undefined") {
-	            var reader = new FileReader();
-	            reader.onload = function (e) {
-	                var data	= [];
-	                var rows = e.target.result.split("\n");
-
-	                for (var i = 2; i < rows.length; i++) {
-
-	                    rows[i] = rows[i].replace(tabregex, '{;}');
-	                    var cells = rows[i].split("{;}").slice(0,5);
-
-	                    if(cells[0]&&cells[3])
-	                    data.push({
-	                    	date: cells[0],
-	                    	sum: cells[3],
-	                    	target: cells[4]
-	                    })
-
-
-	                }
-
-	                cb(data);
-	            }
-	            reader.readAsText(fileUpload.files[0]);
-	        } else {
-	            alert("This browser does not support HTML5.");
-	        }
-	    } else {
-	        alert("Please upload a valid CSV file.");
-	    }
-	}
+    $scope.changeMode=function(mode){
+      $scope.mode=mode;
+    }
 
 
 

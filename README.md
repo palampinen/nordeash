@@ -1,12 +1,16 @@
-# nordeash
+# NORDEASH
 
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.11.1.
+Näyttää Nordean kulutuksesi. Tietojasi käsitellään pelkästään sinun selaimessa.
 
-## Build & development
+[Demo](http://palampinen.github.io/nordeash)
 
-Run `grunt` for building and `grunt serve` for preview.
+## Asenna ja aja koneellasi
 
-## Testing
+`git clone https://github.com/palampinen/nordeash.git`
 
-Running `grunt test` will run the unit tests with karma.
+`cd nordeash`
+
+`bower install && npm install`
+
+`grunt serve`
+
