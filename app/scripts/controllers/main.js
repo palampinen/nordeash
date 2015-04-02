@@ -10,16 +10,26 @@
 angular.module('nordeashApp')
   .controller('MainCtrl', function ($scope, $timeout, Bank) {
 
+
+    $scope.banks = ['Nordea','Osuuspankki']
+    $scope.my = { bank: 'Nordea' };
+
+
     $scope.upload = function(evt){
+      console.log($scope.my.bank);
+      if(!$scope.my.bank)
+        return
       $scope.loading=true;
-      Bank.upload('csvFile',manipulateData)
+      Bank.upload('csvFile',$scope.my.bank, manipulateData)
   	}
 
     $scope.timeInterval = [];
 
   	var manipulateData = function(data){
 
-     $scope.timeInterval.push(data[1].date);
+
+
+     $scope.timeInterval.push(data[0].date);
      $scope.timeInterval.push(data[data.length-1].date);
 
   		var outcome = [],

@@ -1,10 +1,28 @@
 <div class="jumbotron" >
   <div class="container"  ng-class="{'no-menu':!loaded}">
 
-  <h2 class="guide clearfix"><span>1</span> Lataa tilitietosi koneellesi haluamaltasi aikaväliltä Nordean verkkopankista</h2>
+  <h2 class="guide clearfix"><span>1</span> Lataa tilitietosi koneellesi haluamaltasi aikaväliltä omasta verkkopankistasi</h2>
   <img class="infoimg" src="images/nordea-ohje.png" title="Lataa tilitietosi Nordean verkkopankista Tapahtumaluettelo-välilehdeltä" />
- 
-  <h2 class="guide clearfix"><span>2</span> Lataa tiedosto tähän</h2>
+  
+  <h2 class="guide clearfix"><span>2</span> Valitse pankki</h2>
+
+
+  <form>
+  <div class="btn-group bank-choose" >
+    <label class="btn btn-default" ng-class="{active:my.bank==name}" ng-repeat="name in banks" for="{{name}}">
+      <input type="radio" 
+             ng-model="my.bank"
+             ng-value="name"
+             id="{{name}}"
+             name="mybank" />
+      {{name}}
+    </label>
+
+
+  </div>
+  </form>
+
+  <h2 class="guide clearfix"><span>3</span> Lataa tiedosto tähän</h2>
   <p class="lead">
     
     <input type="file" id="csvFile" ng-model="csvFile" custom-on-change="upload" />
