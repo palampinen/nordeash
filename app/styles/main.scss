@@ -27,6 +27,7 @@ $brand-income: #57E08B;
     .btn-default {color:#FFF; background: transparent; border-color: rgba(255,255,255,.3);
       position: relative;
       input {opacity: 0;position: absolute;}
+      &:hover {background:rgba(255,255,255,.1)}
       &.active {background: $brand-accent;color:#FFF; box-shadow: none; border-color:$brand-accent;}
     }
   }
@@ -39,18 +40,19 @@ $brand-income: #57E08B;
   }
   .infoimg {width: 500px;max-width: 100%;margin-bottom: 30px;}
   background:$brand-secondary;
-  color:rgba(255,255,255,.6);
+  color:rgba(255,255,255,.5);
   border-radius: 0;
   position: relative;
   padding-bottom: 0;
   .lead {
-    input {margin:20px 0 30px; padding:25px; display:block; border:2px solid #aaa;outline:none; cursor:pointer;
+    input {margin:20px 0 20px; padding:25px; line-height:1; display:block; border:2px solid #aaa;border-radius:0; outline:none; cursor:pointer;
       max-width: 100%;
       color:$brand-primary;
       &:active,&:hover {border-color:$brand-primary;}
     }
   }
   .no-menu.container {padding-bottom: 20px;}
+  .guides.invisible {display:none;}
   .container {position: relative;padding-bottom:30px; transition:all 0.4s ease;}
 
   .menu {
@@ -65,19 +67,33 @@ $brand-income: #57E08B;
       list-style: none;
       a{
         float:left;
+        width: 50%;
         display:inline-block;
         text-transform:uppercase;
-        font-size: 20px;
-        padding: 10px 35px;
+        font-size: 40px;
+        font-weight: 100;
+        padding: 8px 35px;
         color:rgba(255,255,255,.8);
         outline:0 !important;
         text-decoration: none;
-        &.active {border-bottom: 2px solid $brand-accent;color:#FFF;
+        text-align: center;
+        &.active {
+          border-bottom: 4px solid $brand-accent;
+          color:#FFF;
           .badge {background: $brand-accent;}
         }
         &:hover {color:#FFF;}
-        .badge{background:rgba(255,255,255,.4);margin:-5px 0 0 -5px;float:right;color:$brand-secondary;display:inline-block; font-size:12px; padding:2px 3px; border-radius:2px;}
+        .badge{background:rgba(255,255,255,.4);top:-30px;margin:0 0 0 -15px;float:none;color:$brand-secondary;display:inline-block; font-size:14px; padding:2px 3px; border-radius:2px; position:relative;}
 
+      }
+      &.income-tab{
+        a{
+          &.active {
+          border-color:$brand-primary;
+          .badge { background:$brand-primary;}
+          }
+          
+        }
       }
     }
   }
@@ -91,15 +107,16 @@ $brand-income: #57E08B;
   border:0;
   margin: 0;
   .navbar-nav {
-     &>li>a{font-weight: bold;color:rgba(255,255,255,.3);
-      &:hover {color:rgba(255,255,255,.8)}
+     &>li>a{font-weight: bold;font-size:15px;color:rgba(255,255,255,.25);outline:none !important;
+      &:hover {color:rgba(255,255,255,.5)}
      }
-     &> .active > a, &> .active > a:hover, &> .active > a:focus{background: rgba(255,255,255,.0);color:rgba(255,255,255,.8);}
+     &> .active > a, &> .active > a:hover, &> .active > a:focus{background: transparent;color:rgba(255,255,255,.5);}
   }
   .navbar-brand {
     font-weight:100; 
     text-transform:uppercase; 
     color:#FFF;
+    &:hover, &:active {color:$brand-accent;}
     img {
       height:30px;
       float: left;
@@ -109,37 +126,86 @@ $brand-income: #57E08B;
 }
 
 .container-relative {position: relative;}
-.loader {display:block;margin:0 0 0 -35px;width:70px; height:70px; position: absolute; left:50%; bottom:-35px; padding:10px; border-radius: 50%;text-align: center;background: #FFF url(../images/loader.svg) no-repeat 50% 50%;}
+.loader {display:block;margin:0 auto; padding:10px; text-align: center;}
 
 
-.pricerows {margin:0 0 50px}
 
-.total {
-  color:$brand-accent;
-  text-align: center;
-  font-size: 400%;
-  margin: 0 0 20px;
-  .title {display:block; color:#aaa; font-size:30%;text-transform:uppercase;font-weight:900;}
-  .currency {margin-left:5px; color:#000;}
+
+.canvas-container {
+  width: 90%;
+  margin: 30px auto 60px; 
 }
 
-.pricerow {
-  .lbl {color:#888; text-transform:uppercase; font-weight:100;}
-  .sum {margin:-2px 0 0 20px; font-weight:bold; float:right;}
-  .progress {
-    box-shadow:none;
-    height: 15px;
-    .progress-bar {min-width: 1px;box-shadow: none;background: $brand-accent;}
+
+.pricerows {
+  margin:0 0 50px;
+
+  .total {
+    color:$brand-accent;
+    text-align: center;
+    font-size: 450%;
+    margin: 0 0 20px;
+    .title {display:block; color:#aaa; font-size:30%;text-transform:uppercase;font-weight:900;}
+    .currency {margin-left:5px; color:#000;}
   }
-}
 
-.income{
-  .total {color:$brand-primary;}
-  .progress .progress-bar {background:$brand-primary;}
+  .pricerow {
+    position: relative;
+    .lbl {color:#777; text-transform:uppercase; font-weight:100;}
+    .sum {margin:-2px 0 0 20px; font-weight:bold; float:right;}
+    .progress {
+      box-shadow:none;
+      height: 15px;
+      .progress-bar {min-width: 1px;box-shadow: none;background: $brand-accent;}
+    }
+
+    .info {
+      opacity: 0;
+      background:#eee;padding:20px 0 0;color:$brand-secondary;border-radius:50%; text-align:center;font-weight:100; font-size:20px;position: absolute;width:90px;height:90px;left:50%; top:-17px;margin:0 0 0 -50px;
+      span {display:block; font-size:13px; color:rgba(0,0,0,.3);font-weight:900;}
+    }
+    &:hover {
+      z-index: 2;
+      .progress{background:#eee;}
+      .info {opacity:1;}
+    }
+
+
+  }
+  &.income{
+    .total {color:$brand-primary;}
+    .progress .progress-bar {background:$brand-primary;}
+  }
+
 }
 
 /* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
+@media screen and (max-width: 768px) {
+  .jumbotron {
+    padding-left:0;
+    padding-right:0;
+    .menu {
+      li{ 
+        a{
+          font-size: 20px;
+          padding: 8px;
+ 
+          &.active {
+            border-width: 0 0 2px;
+          }
+          &:hover {color:#FFF;}
+          .badge{top:-20px;font-size:12px;}
 
+        }
+      }
+    }
+  }
+
+  .navbar-default .navbar-toggle{
+    border-color:rgba(255,255,255,.3);
+    &:hover,&:active {background:rgba(255,255,255,.1)}
+    .icon-bar{background:$brand-accent;}
+
+  }
 
 }

@@ -1,6 +1,6 @@
  
 angular.module('nordeashApp')
-  .service('Bank', function ($q,$http) {
+  .service('Bank', function () {
 
     var settings = {
       nordea:{
