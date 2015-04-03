@@ -84,7 +84,7 @@ var start = moment($scope.timeInterval[0], "DD.MM.YYYY"),
 
 // rest dates
 for(var i = parseInt(startYear)+1; i<=endYear; i++){
-  for(var j = 1;(j<=endMonth&&i<=endYear)&&j<=12;j++){
+  for(var j = 1;(j<=endMonth&&i==endYear&&j<=12)||(i!=endYear&&j<=12);j++){
     dateRange.push( moment( i+'-'+j,'YYYY-M').format('MMM YYYY'))
   }
 }
