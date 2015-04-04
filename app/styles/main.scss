@@ -161,13 +161,17 @@ $brand-income: #57E08B;
 
     .info {
       opacity: 0;
-      background:#eee;padding:20px 0 0;color:$brand-secondary;border-radius:50%; text-align:center;font-weight:100; font-size:20px;position: absolute;width:90px;height:90px;left:50%; top:-17px;margin:0 0 0 -50px;
-      span {display:block; font-size:13px; color:rgba(0,0,0,.3);font-weight:900;}
+      transform:scale(0);
+      -webkit-transform:scale(0);
+      transition:all 0.2s ease;
+      -webkit-transition:all 0.2s ease;
+      background:#fff;padding:12px 0 0;color:lighten($brand-secondary,20%);border:9px solid #EEE; border-radius:50%; text-align:center;font-weight:900; font-size:16px;position: absolute;width:90px;height:90px;left:50%; top:-17px;margin:0 0 0 -50px;
+      span {display:block; font-size:13px; color:rgba(0,0,0,.2);font-weight:900;}
     }
     &:hover {
       z-index: 2;
       .progress{background:#eee;}
-      .info {opacity:1;}
+      .info {opacity:1; transform:scale(1);webkit-transform:scale(1);}
     }
 
 
