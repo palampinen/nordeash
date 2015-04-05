@@ -17,6 +17,29 @@ $brand-income: #57E08B;
 /* Custom page header */
 
 .jumbotron {
+
+  background:url('/images/download.jpg') no-repeat 73% 34%;
+  background-size:cover;
+  color:rgba(255,255,255,.5);
+  border-radius: 0;
+  position: relative;
+  padding-bottom: 0;
+  margin-bottom: 0;
+
+&::before {
+    background: linear-gradient($brand-secondary 12%, rgba(63,68,100,.8));
+    bottom: 0;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+  h1 {color:$brand-primary; font-weight:500;margin:0 0 60px; text-align:center; text-transform:none;
+    font-family: "Droid serif",Times,serif;
+    span {color:#EEE;font-weight:900;}
+  }
+
   .choose {max-width: 250px;margin:0 0 30px;
     background: rgba(255,255,255,.3);
     border:none;
@@ -32,26 +55,22 @@ $brand-income: #57E08B;
     }
   }
   .guide {
-    margin: 0 0 15px;
+    margin: 30px 0 15px;
     clear: both;
     line-height: 50px;
     color:#FFF;
+    font-weight: 900;
     span {display: inline-block;float: left;width: 50px;height: 50px; text-align: center;border:2px solid $brand-accent;color:rgba(255,255,255,.6);border-radius: 50%;margin: 0 20px 0px 0;line-height: 46px; padding: 0;}
   }
-  .infoimg {width: 500px;max-width: 100%;margin-bottom: 30px;}
-  background:$brand-secondary;
-  color:rgba(255,255,255,.5);
-  border-radius: 0;
-  position: relative;
-  padding-bottom: 0;
+  .infoimg {width: 500px;max-width: 100%;margin-bottom: 30px;opacity:.85}
   .lead {
-    input {margin:20px 0 20px; padding:25px; line-height:1; display:block; border:2px solid #aaa;border-radius:0; outline:none; cursor:pointer;
+    input {margin:20px 0 20px; padding:25px; width: 500px;max-width: 100%; line-height:1; display:block; border:2px solid #aaa;border-radius:0; outline:none; cursor:pointer;
       max-width: 100%;
       color:$brand-primary;
       &:active,&:hover {border-color:$brand-primary;}
     }
   }
-  .no-menu.container {padding-bottom: 20px;}
+  .no-menu.container {padding-bottom: 30px;min-height:90vh;}
   .guides.invisible {display:none;}
   .container {position: relative;padding-bottom:30px; transition:all 0.4s ease;}
 
@@ -83,14 +102,16 @@ $brand-income: #57E08B;
           .badge {background: $brand-accent;}
         }
         &:hover {color:#FFF;}
-        .badge{background:rgba(255,255,255,.4);top:-30px;margin:0 0 0 -15px;float:none;color:$brand-secondary;display:inline-block; font-size:14px; padding:2px 3px; border-radius:2px; position:relative;}
+        .badge{background:$brand-accent;top:-30px;margin:0 0 0 -15px;float:none;color:lighten($brand-secondary,5%);display:inline-block; font-size:14px; padding:2px 3px; border-radius:2px; position:relative;}
 
       }
       &.income-tab{
         a{
+
+          .badge { background:$brand-primary;}
           &.active {
           border-color:$brand-primary;
-          .badge { background:$brand-primary;}
+          
           }
           
         }
@@ -99,6 +120,31 @@ $brand-income: #57E08B;
   }
 }
 
+.assistant {
+
+  background:#f4f4f4;
+  padding:50px 0;
+  color:#888;
+  font-size: 22px;
+  line-height: 28px;
+  text-align: center;
+  p{margin-bottom:30px;text-align:left;}
+  h2 {margin:0 0 30px; font-weight:900;text-align:center;color:lighten($brand-secondary,25%)}
+}
+
+.btn-outline {
+  display: inline-block;
+  margin: 0 auto;
+  text-align: center;
+  background:transparent;
+  color:lighten($brand-secondary,25%);
+  border:2px solid lighten($brand-secondary,25%);
+  outline:none !important;
+  font-weight: 900;
+  padding:14px 40px;
+  transition: all 0.1s ease-in;
+  &:active,&:hover,&:focus { color:lighten($brand-secondary,25%); border:2px solid lighten($brand-secondary,25%); background:transparent;transform:scale(1.05)}
+}
 
 // Header
 .header {margin:0;}
@@ -107,16 +153,18 @@ $brand-income: #57E08B;
   border:0;
   margin: 0;
   .navbar-nav {
-     &>li>a{font-weight: bold;font-size:15px;color:rgba(255,255,255,.25);outline:none !important;
-      &:hover {color:rgba(255,255,255,.5)}
+    float:right;
+     &>li>a{font-weight: bold;font-size:18px;color:rgba(255,255,255,.25);outline:none !important;
+      &:hover,&:focus {color:rgba(255,255,255,.5)}
      }
      &> .active > a, &> .active > a:hover, &> .active > a:focus{background: transparent;color:rgba(255,255,255,.5);}
   }
   .navbar-brand {
-    font-weight:100; 
+    font-weight:500;
+    font-size: 26px;
     text-transform:uppercase; 
     color:#FFF;
-    &:hover, &:active {color:$brand-accent;}
+    &:hover, &:active,&:focus {color:$brand-accent;}
     img {
       height:30px;
       float: left;
@@ -124,6 +172,7 @@ $brand-income: #57E08B;
     }
   }
 }
+
 
 .container-relative {position: relative;}
 .loader {display:block;margin:0 auto; padding:10px; text-align: center;}
@@ -133,26 +182,28 @@ $brand-income: #57E08B;
 
 .canvas-container {
   width: 90%;
-  margin: 30px auto 60px; 
+  margin: 45px auto 60px; 
 }
 
 
 .pricerows {
-  margin:0 0 50px;
+  margin:0 0 100px;
 
   .total {
     color:$brand-accent;
     text-align: center;
     font-size: 450%;
     margin: 0 0 20px;
-    .title {display:block; color:#aaa; font-size:30%;text-transform:uppercase;font-weight:900;}
+    .title {display:block; color:#bbb; font-size:30%;text-transform:uppercase;font-weight:900;
+      span {color:#999;}
+    }
     .currency {margin-left:5px; color:#000;}
   }
 
   .pricerow {
     position: relative;
     .lbl {color:#777; text-transform:uppercase; font-weight:100;}
-    .sum {margin:-2px 0 0 20px; font-weight:bold; float:right;}
+    .sum {margin:0px 0 0 20px; font-weight:bold; float:right;}
     .progress {
       box-shadow:none;
       height: 15px;
@@ -165,7 +216,7 @@ $brand-income: #57E08B;
       -webkit-transform:scale(0);
       transition:all 0.2s ease;
       -webkit-transition:all 0.2s ease;
-      background:#fff;padding:12px 0 0;color:lighten($brand-secondary,20%);border:9px solid #EEE; border-radius:50%; text-align:center;font-weight:900; font-size:16px;position: absolute;width:90px;height:90px;left:50%; top:-17px;margin:0 0 0 -50px;
+      background:#fff;padding:15px 0 0;color:lighten($brand-secondary,20%);border:9px solid #EEE; border-radius:50%; text-align:center;font-weight:900; font-size:18px;position: absolute;width:90px;height:90px;left:50%; top:-17px;margin:0 0 0 -50px;
       span {display:block; font-size:13px; color:rgba(0,0,0,.2);font-weight:900;}
     }
     &:hover {
@@ -188,6 +239,9 @@ $brand-income: #57E08B;
   .jumbotron {
     padding-left:0;
     padding-right:0;
+    .guide {
+      font-size: 20px;
+    }
     .menu {
       li{ 
         a{
@@ -205,11 +259,14 @@ $brand-income: #57E08B;
     }
   }
 
-  .navbar-default .navbar-toggle{
-    border-color:rgba(255,255,255,.3);
-    &:hover,&:active {background:rgba(255,255,255,.1)}
-    .icon-bar{background:$brand-accent;}
+  .navbar-default{
+      .navbar-collapse{border-color:rgba(255,255,255,.1);box-shadow:none;}
+      .navbar-toggle{
 
+      border-color:rgba(255,255,255,.0);
+      &:hover,&:active {background:rgba(255,255,255,.1)}
+      .icon-bar{background:$brand-accent;border-radius:0;}
+
+      }
   }
-
 }

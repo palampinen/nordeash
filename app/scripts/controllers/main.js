@@ -190,6 +190,11 @@ for(var i = parseInt(startYear)+1; i<=endYear; i++){
 
       $scope.loaded = true;
       $scope.mode = 'outcome';
+
+      //scroll to menu
+      $timeout(function(){
+        window.scrollTo($("#account-menu").offset().top, 0);    
+      },100)
   	}
 
 

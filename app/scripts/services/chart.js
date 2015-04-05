@@ -65,13 +65,13 @@ angular.module('nordeashApp')
     scaleBeginAtZero: false,
 
     // String - Scale label font declaration for the scale label
-    scaleFontFamily: "'Segoe UI','Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+    scaleFontFamily: "'Source Sans Pro','Segoe UI','Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
 
     // Number - Scale label font size in pixels
     scaleFontSize: 12,
 
     // String - Scale label font weight style
-    scaleFontStyle: "100",
+    scaleFontStyle: "900",
 
     // String - Scale label font colour
     scaleFontColor: "#666",
@@ -92,13 +92,13 @@ angular.module('nordeashApp')
     tooltipFillColor: "rgba(63,68,100,0.7)",
 
     // String - Tooltip label font declaration for the scale label
-    tooltipFontFamily: "'Helvetica Neue', 'Helvetica', 'Segoe UI','Roboto', sans-serif",
+    tooltipFontFamily: "'Source Sans Pro','Helvetica Neue', 'Helvetica', 'Segoe UI','Roboto', sans-serif",
 
     // Number - Tooltip label font size in pixels
     tooltipFontSize: 20,
 
     // String - Tooltip font weight style
-    tooltipFontStyle: "100",
+    tooltipFontStyle: "400",
 
     // String - Tooltip label font colour
     tooltipFontColor: "#fff",
@@ -110,7 +110,7 @@ angular.module('nordeashApp')
     tooltipTitleFontSize: 12,
 
     // String - Tooltip title font weight style
-    tooltipTitleFontStyle: "100",
+    tooltipTitleFontStyle: "900",
 
     // String - Tooltip title font colour
     tooltipTitleFontColor: "#fff",

@@ -1,16 +1,17 @@
 <div class="jumbotron" >
   <div class="container"  ng-class="{'no-menu':!loaded}">
+  <h1>Miltä tilisi <span>oikeasti</span> näyttää <i class="ion-arrow-graph-up-right"></i></h1>
 
   <div class="guides" ng-class="{'invisible':loaded}">
-  <h2 class="guide clearfix"><span>1</span> Lataa tilitietosi koneellesi haluamaltasi aikaväliltä omasta verkkopankistasi</h2>
+  <h3 id="step-1" class="guide clearfix"><span>1</span> Lataa tilitietosi koneellesi haluamaltasi aikaväliltä omasta verkkopankistasi</h3>
   <img class="infoimg" src="images/nordea-ohje.png" title="Lataa tilitietosi Nordean verkkopankista Tapahtumaluettelo-välilehdeltä" />
   
-  <h2 class="guide clearfix"><span>2</span> Valitse pankki</h2>
+  <h3 class="guide clearfix"><span>2</span> Valitse pankkisi</h3>
 
 
   <form>
   <div class="btn-group bank-choose" >
-    <label class="btn btn-default" ng-class="{active:my.bank==name}" ng-repeat="name in banks" for="{{name}}">
+    <label class="btn btn-lg btn-default" ng-class="{active:my.bank==name}" ng-repeat="name in banks" for="{{name}}">
       <input type="radio" 
              ng-model="my.bank"
              ng-value="name"
@@ -23,28 +24,41 @@
   </div>
   </form>
 
-  <h2 class="guide clearfix"><span>3</span> Lataa tiedosto tähän</h2>
+  <h3 id="step-3" class="guide clearfix"><span>3</span> Lataa tiedosto tähän</h3>
   <p class="lead">
     
     <input type="file" id="csvFile" ng-model="csvFile" custom-on-change="upload" />
-    Ladattava tiedosto Nordean .txt tai .csv<br />
+    Ladattava tiedosto tulee olla Nordean tai Osuuspankin .txt tai .csv<br />
     Tietojasi käsitellään pelkästään selaimessasi.
   </p>
+
 </div>
   
 
 
    <!--  <img class="loader" ng-show="loading" src="images/loader.svg" /> -->
 
-
-    <ul class="menu" ng-if="loaded">
+    <div id="account-menu"></div>
+    <ul class="menu" ng-if="loaded" >
       <li><a href ng-click="changeMode('outcome')" ng-class="{active:mode=='outcome'}">Menot <span class="badge">{{outcome.length}}</span></a></li>
       <li class="income-tab"><a href ng-click="changeMode('income')" ng-class="{active:mode=='income'}" >Tulot <span class="badge">{{income.length}}</span></a></li>
     </ul>
 
   </div>
 </div>
+<div class="assistant" ng-if="!loaded">
+  <div class="container">
+    <h2>Mikä on Nordeash?</h2>
 
+    <p>Useimmat verkkopankit tarjoavat tilitapahtumat csv-muodossa ja Nordeash osaa muuttaa tämän ymmärrettävään muotoon.</p>
+
+    <p>Tilitapahtumia ei ladata missään vaiheessa palvelimelle vaan niitä käsitellään pelkästään selaimessasi. Mikäli haluaa olla varma tietoturvastaan voi verkkoyhteyden katkaista ohjelman käytön ajaksi ja tyhjentää selainhistorian käytön jälkeen.</p>
+
+    <a class="btn-outline btn btn-lg btn-primary" href="/#/#step-1">
+      Aloita nyt <i class="ion-chevron-up"></i>
+    </a>
+  </div>
+</div>
 
 
   <div class="canvas-container" >
@@ -57,7 +71,7 @@
 
   <!-- income -->
   <div class="pricerows income" ng-switch-when="income" >
-      <h2 class="total" ng-if="totalIncome"><span class="title">Yhteensä {{timeInterval[0]}}-{{timeInterval[1]}}</span> {{totalIncome}}<span class="currency">&euro;</span></h2>
+      <h2 class="total" ng-if="totalIncome"><span class="title">Yhteensä <span>{{timeInterval[0]}}—{{timeInterval[1]}}</span></span> {{totalIncome}}<span class="currency">&euro;</span></h2>
 
       <div ng-repeat="row in income" class="pricerow" >
         <span class="lbl">{{row.id || '-ei tallettajan nimeä-'}}</span> <span class="sum">{{row.sum}} &euro;</span>
@@ -66,13 +80,13 @@
           <div class="progress-bar" role="progressbar"  style="width: {{row.percentage}}%"></div>
         </div>
 
-        <div class="info">{{row.avg}}€<span>/kerta</span></div>
+        <div class="info">~{{row.avg}}€<span>/kerta</span></div>
       </div>
   </div>
 
   <!-- outcome -->
   <div class="pricerows" ng-switch-default >
-    <h2 class="total" ng-if="totalOutcome"><span class="title">Yhteensä {{timeInterval[0]}}-{{timeInterval[1]}}</span> {{totalOutcome}}<span class="currency">&euro;</span></h2>
+    <h2 class="total" ng-if="totalOutcome"><span class="title">Yhteensä <span>{{timeInterval[0]}}—{{timeInterval[1]}}</span></span> {{totalOutcome}}<span class="currency">&euro;</span></h2>
 
     <div ng-repeat="row in outcome" class="pricerow">
       <span class="lbl">{{row.id || '-ei saajan nimeä-'}}</span> <span class="sum">{{row.sum}} &euro;</span>
@@ -81,7 +95,7 @@
         <div class="progress-bar" role="progressbar"  style="width: {{row.percentage}}%"></div>
       </div>
 
-      <div class="info">{{row.avg}}€<span>/kerta</span></div>
+      <div class="info">~{{row.avg}}€<span>/kerta</span></div>
     </div>
   </div>
 

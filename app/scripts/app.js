@@ -20,7 +20,7 @@ angular
   ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
+      .when('/lataa', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
@@ -29,6 +29,6 @@ angular
         controller: 'AboutCtrl'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/lataa'
       });
   });
