@@ -1,18 +1,17 @@
-
   <div class="container"  ng-class="{'no-menu':!loaded}">
   <h1>Mitä tililläsi <span>tapahtuu?</span></h1>
 
   <div class="guides" ng-class="{'invisible':loaded}">
   <h3 id="step-1" class="guide clearfix"><span>1</span> Lataa tilitietosi koneellesi haluamaltasi aikaväliltä omasta verkkopankistasi</h3>
   <img class="infoimg" src="images/nordea-ohje.png" title="Lataa tilitietosi Nordean verkkopankista Tapahtumaluettelo-välilehdeltä" />
-  
+
   <h3 class="guide clearfix"><span>2</span> Valitse pankkisi</h3>
 
 
   <form>
   <div class="btn-group bank-choose" >
     <label class="btn btn-lg btn-default" ng-class="{active:my.bank==name}" ng-repeat="name in banks" for="{{name}}">
-      <input type="radio" 
+      <input type="radio"
              ng-model="my.bank"
              ng-value="name"
              id="{{name}}"
@@ -26,14 +25,14 @@
 
   <h3 id="step-3" class="guide clearfix"><span>3</span> Lataa tiedosto tähän</h3>
   <p class="lead">
-    
+
     <input type="file" id="csvFile" ng-model="csvFile" custom-on-change="upload" />
     Ladattava tiedosto tulee olla Nordean tai Osuuspankin .txt tai .csv<br />
     Tietojasi käsitellään pelkästään selaimessasi.
   </p>
 
 </div>
-  
+
 
 
    <!--  <img class="loader" ng-show="loading" src="images/loader.svg" /> -->
