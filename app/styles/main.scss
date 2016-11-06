@@ -1,5 +1,6 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
-@import "_variables.scss";
+@import "partials/_variables.scss";
+
 
 $brand-secondary: #3F4464;
 $brand-accent: #FA4789;
@@ -11,6 +12,7 @@ $brand-income: #57E08B;
 // endbower
 
 
+@import "partials/_bsoverride.scss";
 
 
 
@@ -18,7 +20,7 @@ $brand-income: #57E08B;
 
 .jumbotron {
 
-  background:url('/images/download.jpg') no-repeat 73% 34%;
+  background:url('../images/download.jpg') no-repeat 73% 34%;
   background-size:cover;
   color:rgba(255,255,255,.5);
   border-radius: 0;
@@ -35,9 +37,9 @@ $brand-income: #57E08B;
     right: 0;
     top: 0;
 }
-  h1 {color:$brand-primary; font-weight:500;margin:0 0 60px; text-align:center; text-transform:none;
-    font-family: "Droid serif",Times,serif;
-    span {color:#EEE;font-weight:900;}
+  h1 {color:#ccc;color:rgba(255,255,255,.75); font-weight:300;margin:30px 0 100px; text-align:center; text-transform:none;
+    font-family: $font-family-accent;
+    span {color:#fff;font-weight:600;}
   }
 
   .choose {max-width: 250px;margin:0 0 30px;
@@ -49,6 +51,8 @@ $brand-income: #57E08B;
     margin:0 0 30px;
     .btn-default {color:#FFF; background: transparent; border-color: rgba(255,255,255,.3);
       position: relative;
+      font-family: $font-family-accent;
+      font-weight: 600;
       input {opacity: 0;position: absolute;}
       &:hover {background:rgba(255,255,255,.1)}
       &.active {background: $brand-accent;color:#FFF; box-shadow: none; border-color:$brand-accent;}
@@ -59,8 +63,9 @@ $brand-income: #57E08B;
     clear: both;
     line-height: 50px;
     color:#FFF;
-    font-weight: 900;
-    span {display: inline-block;float: left;width: 50px;height: 50px; text-align: center;border:2px solid $brand-accent;color:rgba(255,255,255,.6);border-radius: 50%;margin: 0 20px 0px 0;line-height: 46px; padding: 0;}
+    font-weight: 800;
+    font-family:$font-family-accent;
+    span {display: inline-block;font-family:$font-family-sans-serif; float: left;width: 50px;height: 50px; font-weight:500; text-align: center;border:2px solid $brand-accent;color:rgba(255,255,255,.6);border-radius: 50%;margin: 0 20px 0px 0;line-height: 46px; padding: 0;}
   }
   .infoimg {width: 500px;max-width: 100%;margin-bottom: 30px;opacity:.85}
   .lead {
@@ -75,6 +80,7 @@ $brand-income: #57E08B;
   .container {position: relative;padding-bottom:30px; transition:all 0.4s ease;}
 
   .menu {
+    font-family:$font-family-accent;
     margin: 40px 0 0px;
     bottom:-30px;
     padding: 0;
@@ -82,7 +88,7 @@ $brand-income: #57E08B;
     left: 0;
     width: 100%;
     display: block;
-    li{ 
+    li{
       list-style: none;
       a{
         float:left;
@@ -90,7 +96,7 @@ $brand-income: #57E08B;
         display:inline-block;
         text-transform:uppercase;
         font-size: 40px;
-        font-weight: 100;
+        font-weight: 400;
         padding: 8px 35px;
         color:rgba(255,255,255,.8);
         outline:0 !important;
@@ -102,7 +108,20 @@ $brand-income: #57E08B;
           .badge {background: $brand-accent;}
         }
         &:hover {color:#FFF;}
-        .badge{background:$brand-accent;top:-30px;margin:0 0 0 -15px;float:none;color:lighten($brand-secondary,5%);display:inline-block; font-size:14px; padding:2px 3px; border-radius:2px; position:relative;}
+        .badge{
+          background:$brand-accent;
+          top:-30px;
+          margin:0 0 0 -15px;
+          float:none;
+          color:lighten($brand-secondary,5%);
+          display:inline-block;
+          font-size:14px;
+          padding:2px 3px;
+          border-radius:2px;
+          position:relative;
+          font-family: $font-family-sans-serif;
+
+        }
 
       }
       &.income-tab{
@@ -111,9 +130,9 @@ $brand-income: #57E08B;
           .badge { background:$brand-primary;}
           &.active {
           border-color:$brand-primary;
-          
+
           }
-          
+
         }
       }
     }
@@ -129,10 +148,11 @@ $brand-income: #57E08B;
   line-height: 28px;
   text-align: center;
   p{margin-bottom:30px;text-align:left;}
-  h2 {margin:0 0 30px; font-weight:900;text-align:center;color:lighten($brand-secondary,25%)}
+  h2 {margin:0 0 30px; font-weight:900;text-align:center;color:lighten($brand-secondary,25%);font-family:$font-family-accent;}
 }
 
 .btn-outline {
+  font-family:$font-family-accent;
   display: inline-block;
   margin: 0 auto;
   text-align: center;
@@ -161,8 +181,9 @@ $brand-income: #57E08B;
   }
   .navbar-brand {
     font-weight:500;
+    font-family:$font-family-accent;
     font-size: 26px;
-    text-transform:uppercase; 
+    text-transform:uppercase;
     color:#FFF;
     &:hover, &:active,&:focus {color:$brand-accent;}
     img {
@@ -182,7 +203,8 @@ $brand-income: #57E08B;
 
 .canvas-container {
   width: 90%;
-  margin: 45px auto 60px; 
+  margin: 45px auto 60px;
+  height: 260px;
 }
 
 
@@ -200,14 +222,63 @@ $brand-income: #57E08B;
     .currency {margin-left:5px; color:#000;}
   }
 
+  .input-group.filter {
+    margin-bottom:20px;
+    position: relative;
+    display: block;
+    .input-group-addon {
+      background:transparent;
+      border-radius:0;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 30px;
+      top: 3px;
+      border: none;
+      color: #aaa;
+      z-index: 9;
+      font-size: 20px;
+    }
+    .form-control {
+      border-radius:0;
+      padding-left: 40px;
+      border-color:#ddd;
+      border-left:0;
+      border-width: 0 0 2px;
+      display: block;
+      float: none;
+      font-size: 18px;
+      &:active, &:focus {
+        border-color: $brand-accent;
+      }
+    }
+  }
+
   .pricerow {
     position: relative;
-    .lbl {color:#777; text-transform:uppercase; font-weight:100;}
-    .sum {margin:0px 0 0 20px; font-weight:bold; float:right;}
+    font-size: 17px;
+    .lbl {color:#999; text-transform:uppercase; font-weight:500;font-family:$font-family-accent;}
+    .sum {margin:0px 0 0 10px; font-weight:bold; float:right; text-align:right; min-width:60px;}
     .progress {
       box-shadow:none;
       height: 15px;
       .progress-bar {min-width: 1px;box-shadow: none;background: $brand-accent;}
+    }
+
+    .btn-hide {
+      outline:0 !important;
+      color: $brand-accent;
+      display:inline-block;
+      border-radius:50%;
+      float:left;
+      text-align:center;
+      line-height:30px;
+      width:30px;
+      height:30px;
+      font-size: 22px;
+      transition:all 0.2s ease;
+      margin: 10px 10px 0 0;
+      &:hover, &:active, &:focus {background:#eee;}
     }
 
     .info {
@@ -225,6 +296,26 @@ $brand-income: #57E08B;
       .info {opacity:1; transform:scale(1);webkit-transform:scale(1);}
     }
 
+    .check-on { display: inline-block; }
+    .check-off { display: none; }
+
+    &.excluded {
+      .lbl,.sum {opacity:0.4;}
+      .progress {
+          opacity:0.4;
+        .progress-bar {background:#777;}
+      }
+      .check-on { display: none; }
+      .check-off { display: inline-block; }
+      .btn-hide {
+        // background:lighten($brand-secondary,40%);
+        //transform: rotate(-45deg);
+
+      }
+
+    }
+
+
 
   }
   &.income{
@@ -239,15 +330,25 @@ $brand-income: #57E08B;
   .jumbotron {
     padding-left:0;
     padding-right:0;
+    h1 {margin:20px 0px 50px}
     .guide {
       font-size: 20px;
+      line-height: 30px;
+      padding:10px 0px 0px 65px;
+      position: relative;
+      margin-bottom: 20px;
+      min-height: 70px;
+      span {position: absolute;top:0; left:0;}
     }
+    .lead {font-size:16px;font-weight:500;}
     .menu {
-      li{ 
+      li{
         a{
           font-size: 20px;
           padding: 8px;
- 
+          font-weight: 600;
+
+
           &.active {
             border-width: 0 0 2px;
           }
@@ -260,6 +361,9 @@ $brand-income: #57E08B;
   }
 
   .navbar-default{
+      .navbar-nav{float:none;
+        li {text-align:center;}
+      }
       .navbar-collapse{border-color:rgba(255,255,255,.1);box-shadow:none;}
       .navbar-toggle{
 
@@ -268,5 +372,17 @@ $brand-income: #57E08B;
       .icon-bar{background:$brand-accent;border-radius:0;}
 
       }
+  }
+
+  .canvas-container {
+    margin: 35px auto 10px;
+  }
+  .pricerows {
+    .pricerow{
+      font-size:14px;
+    }
+    .total .title{
+      span {display:block;}
+    }
   }
 }

@@ -10,7 +10,7 @@ angular.module('nordeashApp')
         labels : ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
         datasets : [
         {
-          label:'underscore',
+          label:'Testdata',
           fillColor : "rgba(0,96,112,0.1)",
           strokeColor : "#006070",
           pointColor : "#006070",
@@ -27,7 +27,7 @@ angular.module('nordeashApp')
     animation: true,
 
     // Number - Number of animation steps
-    animationSteps: 60,
+    animationSteps: 45,
 
     // String - Animation easing effect
     animationEasing: "easeOutQuart",
